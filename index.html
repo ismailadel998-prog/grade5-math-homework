@@ -454,7 +454,7 @@ function pick(s){
   if (mine){ S.ans = mine.ans || {}; S.checked = mine.checked || {}; S.results = mine.results || {}; toast('Welcome back, ' + s.name.split(' ')[0] + '!'); }
   else { S.ans = guest.ans; S.checked = guest.checked; S.results = guest.results; toast('Hello, ' + s.name.split(' ')[0] + '!'); }
   try { localStorage.removeItem('g5hw44:guest'); } catch(e){}
-  save(); render();
+  save(); render(); resendOld();
 }
 function needName(){
   if (S.name) return false;
@@ -548,6 +548,13 @@ async function sendResult(d, res){
 }
 async function flushQueue(){ const q = queue(); if (!q.length) return; const left = [];
   for (const p of q){ try { await postOne(p); } catch(e){ left.push(p); } } setQueue(left); }
+
+/* Re-send results made before the sheet was cleared (11 Nov 2026, 15:50 UTC), once per student */
+const WIPE = '2026-11-11T15:50:00.000Z';
+async function resendOld(){
+  for (const d of DAYS){ const r = S.results[d.id];
+    if (r && !r.resent && r.at && r.at < WIPE){ await sendResult(d, r); r.resent = true; save(); } }
+}
 
 /* ===================== PDF for the teacher ===================== */
 const pdfText = s => String(s == null ? '' : s).replace(/[−–]/g, '-').replace(/[’‘]/g, "'").replace(/▢/g, '[ ]').replace(/→/g, '->')
