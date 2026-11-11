@@ -79,17 +79,35 @@ $('loginForm').onsubmit = async e => {
 $('logout').onclick = () => { try { sessionStorage.removeItem('tk'); } catch(_){} location.reload(); };
 $('reload').onclick = async () => { try { D = await load(KEY); render(); } catch(_){ alert('Could not refresh.'); } };
 
+/* every homework that exists (shows even before anyone submits) */
+const KNOWN = [
+  { k:'Tuesday|51', label:'Grade 5 · Tuesday 10 Nov · page 51' },
+  { k:'Wednesday|52', label:'Grade 5 · Wednesday 11 Nov · page 52' },
+  { k:'Grade 4 · Day 1|57', label:'Grade 4 · Day 1 · page 57' },
+  { k:'Grade 4 · Day 2|58', label:'Grade 4 · Day 2 · page 58' }
+];
 function days(){
-  const m = new Map();
-  D.results.forEach(r => { const k = r.day + '|' + r.page; if (!m.has(k)) m.set(k, { k, label: r.day + ' · page ' + r.page, t: r.at }); else if (r.at < m.get(k).t) m.get(k).t = r.at; });
-  return [...m.values()].sort((a, b) => a.t < b.t ? 1 : -1);
+  const m = new Map(KNOWN.map(d => [d.k, { k:d.k, label:d.label, t:'' }]));
+  D.results.forEach(r => { const k = r.day + '|' + r.page;
+    if (!m.has(k)) m.set(k, { k, label:r.day + ' · page ' + r.page, t:r.at });
+    if (r.at > m.get(k).t) m.get(k).t = r.at; });
+  return [...m.values()];
+}
+const gradeOf = k => { const g = /^Grade (\d)/.exec(k || ''); return g ? g[1] : '5'; };
+function setClasses(){
+  const g = gradeOf($('daySel').value);
+  $('clsSel').innerHTML = '<option value="">All Grade ' + g + '</option>' +
+    [...new Set(D.roster.map(s => s.cls))].filter(c => c !== 'Test' && String(c).startsWith(g)).sort().map(c => `<option>${esc(c)}</option>`).join('');
 }
 function start(){
   $('login').hidden = true; $('dash').hidden = false;
   const ds = days();
-  $('daySel').innerHTML = ds.length ? ds.map(d => `<option value="${esc(d.k)}">${esc(d.label)}</option>`).join('') : '<option value="">No submissions yet</option>';
-  $('clsSel').innerHTML = '<option value="">All</option>' + [...new Set(D.roster.map(s => s.cls))].filter(c => c !== 'Test').map(c => `<option>${esc(c)}</option>`).join('');
-  $('daySel').onchange = $('clsSel').onchange = render; render();
+  $('daySel').innerHTML = ds.map(d => `<option value="${esc(d.k)}">${esc(d.label)}</option>`).join('');
+  const latest = ds.filter(d => d.t).sort((x, y) => x.t < y.t ? 1 : -1)[0];
+  if (latest) $('daySel').value = latest.k;
+  setClasses();
+  $('daySel').onchange = () => { setClasses(); render(); };
+  $('clsSel').onchange = render; render();
 }
 function current(){
   const [day, page] = ($('daySel').value || '|').split('|'), cls = $('clsSel').value;
