@@ -1,0 +1,622 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Grade 5 Math Homework – Topic 4 Lesson 4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: a stack of workbook pages (navy bands, green page edge) under a sticky homework bar.
+     One deliberate light look that matches the printed booklet, so every colour is set explicitly. */
+  :root{
+    --navy:#111c57; --green:#5cc246; --desk:#e6e9ef; --paper:#fbfbfa; --ink:#1f2328; --muted:#5d6470;
+    --line:#8b929b; --box:#fffcee; --soft:#e9e9ec; --rule:#c7c9d1; --white:#ffffff;
+    --ok:#1d7f46; --ok-bg:#e1f3e8; --bad:#c23b3b; --bad-bg:#fbe4e4; --mark:#fde58a;
+    --display:"Roboto Condensed","Arial Narrow",Arial,sans-serif;
+    --body:"Open Sans","Segoe UI",system-ui,sans-serif;
+    --hand:"Comic Neue","Comic Sans MS",cursive;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--white)}
+  button,input,select,textarea{font-family:inherit;color:var(--ink)}
+  button{cursor:pointer}
+  :focus-visible{outline:3px solid #2c63c9;outline-offset:2px}
+  sup{font-size:.62em;line-height:0}
+
+  /* ---------- sticky homework bar ---------- */
+  .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--white);box-shadow:0 2px 8px rgba(17,28,87,.10)}
+  .bar .in{max-width:1180px;margin:0 auto;padding-block:10px 12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:8px}
+  .row1{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+  .row1 h1{margin:0;font-size:19px;color:var(--navy);font-weight:700;text-wrap:balance}
+  .prog{flex:1;min-width:180px}
+  .prog .t{font-size:14px;color:var(--muted)}
+  .prog .track{height:10px;background:#e1e4ec;border-radius:99px;overflow:hidden;margin-top:3px}
+  .prog .track i{display:block;height:100%;width:0;background:var(--green);border-radius:99px;transition:width .3s}
+  .days{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
+  .day{flex:0 0 auto;border:1.5px solid var(--rule);background:var(--white);border-radius:8px;padding:5px 11px;text-align:left;line-height:1.25;font-size:13px;color:var(--muted)}
+  .day b{display:block;color:var(--ink);font-size:14px}
+  .day.on{background:var(--navy);border-color:var(--navy);color:#cfd5f0}
+  .day.on b{color:var(--white)}
+  .day .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-left:5px;vertical-align:1px}
+
+  /* ---------- workbook page ---------- */
+  main{max-width:1180px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:26px}
+  .page{position:relative;background:var(--paper);box-shadow:0 2px 10px rgba(17,28,87,.12);border-top:16px solid var(--navy);border-bottom:16px solid var(--navy);padding:28px 70px 22px 40px;min-width:0}
+  .page::after{content:"";position:absolute;top:0;bottom:0;right:0;width:30px;background:var(--green)}
+  .page.left{padding:28px 40px 22px 70px}
+  .page.left::after{right:auto;left:0}
+  .hwtag{display:inline-block;background:var(--navy);color:var(--white);font-size:13px;font-weight:600;border-radius:999px;padding:3px 12px;margin-bottom:12px}
+
+  .namebar{display:flex;align-items:flex-end;gap:10px 14px;flex-wrap:wrap;margin-bottom:6px}
+  .namebar label{font-size:18px;color:#333;padding-bottom:6px}
+  .nm{flex:1 1 260px;position:relative;min-width:0}
+  .nm input{width:100%;border:0;border-bottom:1.5px solid #777;background:transparent;font-size:21px;padding:4px 6px;outline:none}
+  .nm input:focus{border-bottom-color:var(--navy);background:#f1f4fb}
+  .help{font-size:14px;color:var(--muted);margin-top:4px}
+  .help.ok{color:var(--ok);font-weight:600}
+  .clsel{border:0;border-bottom:1.5px solid #777;background:transparent;font-size:18px;padding:4px 6px;min-width:110px}
+  .ac{position:absolute;left:0;right:0;top:44px;background:var(--white);border:1px solid #cdd1dc;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.15);z-index:25;max-height:320px;overflow:auto}
+  .ac div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 12px;font-size:17px;cursor:pointer;border-bottom:1px solid #f0f0f2}
+  .ac div:hover,.ac div.hi{background:#e7edf9}
+  .ac mark{background:var(--mark);color:inherit;padding:0}
+  .ac .badge{background:var(--navy);color:var(--white);border-radius:999px;font-size:12px;font-weight:700;padding:2px 9px}
+  .ac .none{color:#888;cursor:default}
+
+  .page-top{display:flex;justify-content:flex-end;margin:10px 0 16px}
+  .ap-box{border:3px solid var(--rule);border-radius:14px;padding:10px 20px 12px;background:var(--white);width:420px;max-width:100%;box-shadow:0 3px 0 #dcdde3}
+  .ap-title{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;color:#222}
+  .ap-title em{font-style:normal;font-family:"Arial Black",Arial,sans-serif;font-size:34px}
+  .ap-sub{font-weight:700;color:#4a4a4a;font-size:21px;line-height:1.3;margin-top:4px;text-wrap:balance}
+  .another{border:3px solid #555;border-radius:3px;padding:14px 20px 18px;margin-bottom:22px}
+  .another h3{margin:0 0 8px;font-family:var(--display);font-weight:700;font-size:25px}
+  .look{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+  .look > div{flex:1 1 260px;min-width:0}
+  .bubble{font-family:var(--hand);font-size:17px;line-height:1.3;background:var(--white);border:2px solid var(--green);border-radius:50%;padding:16px 24px;text-align:center;max-width:360px;position:relative;flex:0 1 330px}
+  .bubble::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);border:10px solid transparent;border-top-color:var(--green);border-bottom:0}
+  .steps{display:grid;grid-template-columns:max-content max-content;column-gap:8px;font-variant-numeric:tabular-nums}
+
+  .dir{display:inline-block;background:var(--soft);border:1.5px solid #9a9aa2;padding:6px 14px;margin:10px 0 14px;font-size:16px}
+  .assess{display:flex;align-items:center;gap:10px;margin:22px 0 8px}
+  .assess .pill{display:flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);font-family:var(--display);font-weight:700;font-size:19px;padding:3px 14px 3px 4px;border-radius:6px}
+  .assess .pill i{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--white);color:var(--navy);align-items:center;justify-content:center;font-style:normal;font-size:15px}
+  .assess hr{flex:1;border:0;border-top:3px solid var(--navy);margin:0}
+  .page-foot{display:flex;justify-content:flex-end;gap:22px;margin-top:28px;font-size:17px}
+  .page.left .page-foot{justify-content:flex-start}
+  .page-foot span+span{font-weight:700}
+  .page-foot .tl b{font-weight:700}
+  .page-foot .tl em{font-style:normal;border-left:1.5px solid var(--ink);margin-left:9px;padding-left:9px}
+
+  /* ---------- questions ---------- */
+  .qs{display:grid;gap:26px 26px;margin-bottom:6px}
+  .c1{grid-template-columns:1fr}
+  .c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .split{gap:0}
+  .split > .q{padding:18px 24px 22px 0;border-top:1.5px solid #9a9aa2}
+  .split > .q:nth-child(2n){padding-left:24px;padding-right:0;border-left:1.5px solid #9a9aa2}
+  .q{position:relative;min-width:0}
+  .qline{display:flex;gap:10px;align-items:baseline}
+  .num{font-weight:700;min-width:28px;font-size:19px;color:#333;flex:0 0 auto}
+  .tag{font-weight:700;color:#3d4450}
+  .txt{min-width:0}
+  .ans{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;margin:10px 0 0 38px}
+  .ans .lab{font-size:15px;color:var(--muted)}
+  input.b{border:1.5px solid var(--line);background:var(--box);border-radius:6px;height:44px;width:150px;max-width:100%;font-size:20px;padding:4px 8px;text-align:center;outline:none;font-variant-numeric:tabular-nums}
+  input.b.sm{width:64px}
+  input.b:focus{border-color:#2c63c9;box-shadow:0 0 0 2px rgba(44,99,201,.2)}
+  input.b.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-weight:700}
+  input.b.bad{background:var(--bad-bg);border-color:var(--bad);color:var(--bad);font-weight:700}
+  .vert{display:inline-grid;grid-template-columns:auto auto;column-gap:8px;font-size:21px;font-variant-numeric:tabular-nums;line-height:1.35}
+  .vert .r{text-align:right;padding-right:6px}
+  .vert .u{border-bottom:2px solid var(--ink)}
+  .inl{font-size:20px;white-space:nowrap}
+  .lines{display:grid;gap:8px;margin:8px 0 0 38px}
+  .lines .l{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:19px;font-variant-numeric:tabular-nums}
+  .lines .l > span:first-child{min-width:140px}
+  .opts{display:flex;flex-wrap:wrap;gap:8px 26px;margin:10px 0 0 38px}
+  .opts.two{display:grid;grid-template-columns:repeat(2,max-content);gap:10px 56px}
+  .opt{border:0;background:none;padding:2px 0;font-size:18px;display:flex;align-items:center;gap:10px;text-align:left}
+  .opt b{display:inline-flex;flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--ink);align-items:center;justify-content:center;font-size:14px;background:var(--white)}
+  .opt.sq b{border-radius:5px}
+  .opt.on b{background:var(--navy);border-color:var(--navy);color:var(--white)}
+  .opt.on.ok b{background:var(--ok);border-color:var(--ok)}
+  .opt.on.bad b{background:var(--bad);border-color:var(--bad)}
+  .opts.col{flex-direction:column;gap:8px}
+  .digits{display:flex;align-items:center;gap:6px;margin:10px 0 0 38px;font-size:20px;flex-wrap:wrap}
+  .digits label{display:flex;align-items:center;gap:4px;font-style:italic}
+
+  .data{border:3px solid var(--rule);border-radius:10px;display:flex;overflow:hidden;width:max-content;max-width:100%;font-size:16px;background:var(--white)}
+  .data .side{background:#777;color:var(--white);writing-mode:vertical-rl;transform:rotate(180deg);font-weight:700;font-size:11px;letter-spacing:2px;padding:6px 3px;text-align:center}
+  .data table{border-collapse:collapse}
+  .data th{padding:4px 16px;border-bottom:1.5px dotted #888}
+  .data td{padding:3px 16px;font-variant-numeric:tabular-nums}
+  .data td+td,.data th+th{border-left:1.5px dotted #888;text-align:center}
+  .data tr:nth-child(odd) td{background:#f1f1f3}
+  .wrapx{overflow-x:auto;max-width:100%}
+  .tape{font-size:14px;font-weight:700;margin:10px 0 0 38px;max-width:420px}
+  .tape .tot{text-align:center;position:relative;padding-bottom:3px;border-bottom:1.5px solid var(--ink);margin-bottom:5px;font-style:italic}
+  .tape .bx{display:flex;border:1.5px solid var(--ink);background:var(--white)}
+  .tape .bx div{flex:1;text-align:center;padding:6px 2px;min-height:30px}
+  .tape .bx div+div{border-left:1.5px solid var(--ink)}
+  .pvc{border-collapse:collapse;font-size:19px;font-weight:700;margin:10px 0 0 38px}
+  .pvc th{font-size:11px;font-weight:600;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);height:96px;padding:2px 6px;text-align:left}
+  .pvc td{width:34px;height:32px;border:1.5px solid #555;text-align:center;background:var(--white)}
+  .pvc td.g{background:#ddd}
+
+  .chk{display:flex;align-items:center;gap:10px;margin:12px 0 0 38px;min-height:30px;flex-wrap:wrap}
+  .chk button{border:1.5px solid var(--navy);color:var(--navy);background:var(--white);border-radius:6px;padding:4px 16px;font-size:14px;font-weight:600}
+  .chk button:hover{background:#eef1f9}
+  .fb{font-size:14px;font-weight:600}
+  .fb.ok{color:var(--ok)} .fb.bad{color:var(--bad)} .fb.wait{color:var(--muted)}
+  .mark{position:absolute;left:-30px;top:2px;width:24px;height:24px;border-radius:50%;display:none;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:14px}
+  .q.ok .mark{display:flex;background:var(--ok)} .q.bad .mark{display:flex;background:var(--bad)}
+  .q.ok .mark::before{content:"✓"} .q.bad .mark::before{content:"✗"}
+
+  /* ---------- submit + result ---------- */
+  .submitbox{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--white);border:2px solid var(--navy);border-radius:10px;padding:14px 18px}
+  .submitbox p{margin:0;color:var(--muted);font-size:15px}
+  .tb{border:2px solid var(--navy);background:var(--white);color:var(--navy);border-radius:8px;padding:10px 20px;font-size:17px;font-weight:600}
+  .tb.fill{background:var(--navy);color:var(--white)}
+  .tb:disabled{opacity:.5;cursor:default}
+  .result{background:var(--white);border:3px solid var(--navy);border-radius:12px;padding:18px 22px;display:grid;gap:10px}
+  .result .score{font-family:var(--display);font-size:56px;line-height:1;color:var(--navy);font-weight:700;font-variant-numeric:tabular-nums}
+  .result .who{color:var(--muted);font-weight:600}
+  .result .btns{display:flex;flex-wrap:wrap;gap:10px}
+  .result .btns .tb.fill{font-size:19px;padding:13px 26px}
+  .rlist{display:grid;gap:4px;font-size:15px}
+  .rlist div{display:flex;gap:10px;border-bottom:1px dotted #c3c6cf;padding:4px 0}
+  .rlist b{min-width:58px}
+  .note{font-size:14px;color:var(--muted)}
+
+  .modal{position:fixed;inset:0;background:rgba(10,16,40,.45);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+  .modal .box{background:var(--white);padding:22px;max-width:440px;width:100%;border-radius:10px;border-top:10px solid var(--navy)}
+  .modal h3{margin:0 0 8px;font-size:22px;color:var(--navy)}
+  .modal .mb{display:flex;gap:10px;margin-top:16px}.modal .mb button{flex:1}
+  .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:var(--white);padding:10px 18px;font-weight:600;z-index:60;border-radius:8px;max-width:90vw;text-align:center}
+
+  @media (max-width:860px){
+    .page,.page.left{padding:22px 34px 20px 16px;border-top-width:11px;border-bottom-width:11px}
+    .page.left{padding:22px 16px 20px 34px}
+    .page::after{width:14px}
+    .c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .c3{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .c2,.split{grid-template-columns:1fr}
+    .split > .q:nth-child(2n){padding-left:0;border-left:0}
+  }
+  @media (max-width:520px){
+    body{font-size:16px}
+    .c3,.c4{grid-template-columns:1fr}
+    .ap-title{font-size:25px}.ap-title em{font-size:29px}.ap-sub{font-size:18px}
+    .ans,.lines,.opts,.chk,.digits,.tape,.pvc{margin-left:30px}
+    .mark{left:-26px}
+    .opts.two{grid-template-columns:1fr}
+    .lines .l > span:first-child{min-width:0}
+  }
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+
+<header class="bar"><div class="in">
+  <div class="row1">
+    <h1>Grade 5 Math Homework · Topic 4 – Lesson 4</h1>
+    <div class="prog"><div class="t"><span id="dayName"></span> · answered <b id="nDone">0</b> of <b id="nAll">0</b></div><div class="track"><i id="fill"></i></div></div>
+  </div>
+  <nav class="days" id="days" aria-label="Homework day"></nav>
+</div></header>
+
+<main id="main"></main>
+
+<div id="modal" class="modal" hidden><div class="box" id="modalBox"></div></div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/* ===================== class list ===================== */
+const API = 'PASTE_SCRIPT_URL_HERE';   // Google Apps Script web app link (see SETUP.md)
+const CLASSES = ['5A', '5B'];
+
+/* ===================== homework (from the Week 10 and Week 11 plans) ===================== */
+// Question kinds:  num (one answer box) · vert (vertical problem + box) · lines (several boxes) · choice · mc (A–D) · multi (choose all)
+// key:  numbers compare by value (commas, units and $ are ignored) · choice/mc compare the option · multi = list of option indexes
+const LOOK = {
+  '4-4': `<div class="look"><div>Travis can read a book chapter in 2.3 hours. The book has 18 chapters. How long will it take Travis to read the book?
+      <div style="display:flex;gap:28px;flex-wrap:wrap;margin-top:10px">
+        <div class="vert"><span></span><span class="r">23</span><span>×</span><span class="r u">18</span><span></span><span class="r">184</span><span>+</span><span class="r u">230</span><span></span><span class="r">414</span></div>
+        <div style="font-size:15px;line-height:1.7"><b>Multiply as with whole numbers.</b><br>So, 23 × 18 = 414. Now think about the number of decimal places to find 2.3 × 18.<br>Since 2 × 18 = 36 and 3 × 18 = 54, the product must be between 36 and 54.<br><b>41.4</b></div></div>
+      <p style="margin:10px 0 0">It will take Travis 41.4 hours.</p></div>
+      <div class="bubble">41.4 is reasonable because 2 × 20 = 40.</div></div>`
+};
+const TITLES = { '4-4':'Multiply a Decimal and a Whole Number' };
+const TOPIC = { '4-4':4 };
+
+const V = (n, a, b, key) => ({ n, kind:'vert', a, b, key:{ a:key } });
+const N = (n, text, key, unit, extra) => Object.assign({ n, kind:'num', text, unit, key:{ a:key } }, extra || {});
+const MC = (n, text, opts, key, extra) => Object.assign({ n, kind:'mc', text, opts, key:{ c:key } }, extra || {});
+
+const DAYS = [
+ { id:'l44-tue', date:'10 Nov', day:'Tuesday', page:51, lesson:'4-4', first:true, plan:'Answer page 51',
+   blocks:[
+     { dir:'In <b>1</b> and <b>2</b>, use number sense to find the products.', cols:2, qs:[
+       { n:1, kind:'lines', text:'<span class="inl">46 × 3 = 38</span>', lines:[['4.6 × 3 =','a'],['0.46 × 3 =','b']], key:{ a:'13.8', b:'1.38' } },
+       { n:2, kind:'lines', text:'<span class="inl">17 × 15 = 255</span>', lines:[['17 × 1.5 =','a'],['17 × 0.15 =','b']], key:{ a:'25.5', b:'2.55' } } ] },
+     { dir:'In <b>3–14</b>, find each product.', cols:4, qs:[
+       V(3,'27.4','7','191.8'), V(4,'336','0.4','134.4'), V(5,'88','1.8','158.4'), V(6,'4.02','9','36.18'),
+       N(7,'<span class="inl">1.7 × 12</span>','20.4'), N(8,'<span class="inl">105 × 0.4</span>','42'), N(9,'<span class="inl">1.4 × 32</span>','44.8'), N(10,'<span class="inl">0.89 × 21</span>','18.69'),
+       N(11,'<span class="inl">4.4 × 18</span>','79.2'), N(12,'<span class="inl">0.3 × 279</span>','83.7'), N(13,'<span class="inl">95 × 5.7</span>','541.5'), N(14,'<span class="inl">46 × 0.46</span>','21.16') ] } ] },
+
+ { id:'l44-wed', date:'11 Nov', day:'Wednesday', page:52, lesson:'4-4', plan:'Answer page 52 questions 15, 18, 19, 20, 22 and 23',
+   blocks:[
+     { cols:1, qs:[
+       N(15,'If each month in Reno had the same average rainfall as in August, what would the total amount of rainfall be after 12 months?','2.28','mm',
+         { side:`<div class="data"><div class="side">DATA</div><table><tr><th colspan="2">Desert Rainfall in August</th></tr><tr><th>Desert</th><th>Average Rainfall (mm)</th></tr><tr><td>Mojave</td><td>0.1</td></tr><tr><td>Reno</td><td>0.19</td></tr><tr><td>Sahara</td><td>0.17</td></tr></table></div>` }) ] },
+     { cols:2, split:true, qs:[
+       N(18,'Each juice bottle contains 8.6 fluid ounces. How many fluid ounces of juice are in a carton with 12 bottles?','103.2','fluid ounces'),
+       N(19,'<span class="tag">Be Precise</span> A 100-watt solar power panel usually costs $146. They are on sale for 0.75 of the regular price. Multiply 146 by 0.75 to find the sale price.','109.5','dollars') ] },
+     { cols:1, qs:[
+       N(20,'<span class="tag">Higher Order Thinking</span> A family has a huge array of solar panels to make electricity. If each month they sell back 420 kWh for $0.07 per kWh, how much money could they make in a year?','352.8','dollars') ] },
+     { assess:true, cols:2, qs:[
+       MC(22,'Which of the following equations is <b>NOT</b> true?',['225 × 4 = 9,000','225 × 0.04 = 9','22.5 × 4 = 90','225 × 0.4 = 90'],'A',{ col:true }),
+       MC(23,'Which of the following equations is <b>NOT</b> true?',['80 × 15 = 1,200','0.8 × 15 = 12','80 × 0.15 = 1.2','80 × 1.5 = 120'],'C',{ col:true }) ] } ] }
+];
+
+// what the student sees as the correct answer after submitting
+function shownAnswer(q){
+  const k = q.key;
+  if (q.kind === 'mc') return k.c + ' · ' + q.opts['ABCD'.indexOf(k.c)];
+  if (q.kind === 'multi') return k.m.map(i => 'ABCDE'[i]).join(', ');
+  if (q.kind === 'digits') return '802 × 64 = 51,328';
+  if (q.kind === 'choice') return k.c;
+  const f = v => /^[0-9.]+$/.test(v) ? Number(v).toLocaleString('en-US', { maximumFractionDigits:6 }) : v;
+  if (q.kind === 'lines') return q.lines.map(([l, p]) => f(k[p])).join(' · ');
+  if (q.kind === 'table') return '0.1 gal → ' + f(k.a) + ' mi · 10 gal → ' + f(k.b) + ' mi';
+  return f(k.a) + (q.unit ? ' ' + q.unit : '');
+}
+
+/* ===================== marking (final answers only) ===================== */
+const toNum = s => { const t = String(s == null ? '' : s).replace(/[^0-9.\-]/g, ''); return t === '' || t === '.' ? NaN : Number(t); };
+const same = (given, key) => /^[0-9.]+$/.test(key) ? Math.abs(toNum(given) - Number(key)) < 1e-9 : String(given || '').trim().toLowerCase() === key.toLowerCase();
+function partsOf(q){ return q.kind === 'multi' ? ['m'] : Object.keys(q.key); }
+function mark(q, a){
+  a = a || {};
+  const parts = {};
+  if (q.kind === 'multi'){ const g = (a.m || []).slice().sort().join(','); parts.m = g === q.key.m.slice().sort().join(','); }
+  else if (q.anyOrder){
+    const got = Object.keys(q.key).map(p => toNum(a[p])).sort((x, y) => x - y), want = Object.values(q.key).map(Number).sort((x, y) => x - y);
+    const ok = got.every((v, i) => Math.abs(v - want[i]) < 1e-9); Object.keys(q.key).forEach(p => parts[p] = ok);
+  }
+  else Object.keys(q.key).forEach(p => parts[p] = same(a[p], q.key[p]));
+  return { right: Object.values(parts).every(Boolean), parts };
+}
+const filled = (q, a) => { a = a || {}; return q.kind === 'multi' ? (a.m || []).length > 0 : partsOf(q).every(p => String(a[p] || '').trim() !== ''); };
+
+/* ===================== state ===================== */
+const S = { name:'', cls:'', day:DAYS[0].id, ans:{}, checked:{}, results:{} };
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+const dayOf = id => DAYS.find(d => d.id === id);
+const qid = (d, q) => d.id + ':' + q.n;
+const plain = h => { const t = document.createElement('div'); t.innerHTML = String(h).replace(/<sup>(.*?)<\/sup>/g, '^$1').replace(/<br\s*\/?>/g, ' '); return t.textContent.replace(/\s+/g, ' ').trim(); };
+function toast(m, ms){ const t = $('toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, ms || 2600); }
+function modal(h){ $('modalBox').innerHTML = h; $('modal').hidden = false; }
+function closeModal(){ $('modal').hidden = true; }
+const LS = () => 'g5hw44:' + (S.name ? (S.cls + '|' + S.name).toLowerCase() : 'guest');
+function save(){ try { localStorage.setItem(LS(), JSON.stringify({ ans:S.ans, checked:S.checked, results:S.results })); } catch(e){} }
+function load(){ try { return JSON.parse(localStorage.getItem(LS()) || 'null'); } catch(e){ return null; } }
+function rememberDay(){ try { localStorage.setItem('g5hw44:day', S.day); } catch(e){} }
+
+/* ===================== rendering ===================== */
+function renderDays(){
+  $('days').innerHTML = DAYS.map(d => `<button class="day ${d.id === S.day ? 'on' : ''}" data-day="${d.id}">
+      <b>${d.day} ${d.date}${S.results[d.id] ? '<span class="dot" title="Submitted"></span>' : ''}</b>Page ${d.page}</button>`).join('');
+}
+function nb(id, p, cls){ return `<input class="b ${cls || ''}" id="${id.replace(':', '_')}_${p}" inputmode="decimal" autocomplete="off" data-q="${id}" data-p="${p}" aria-label="Answer">`; }
+
+function qHtml(d, q){
+  const id = qid(d, q);
+  const head = q.text ? `<div class="qline"><span class="num">${q.n}.</span><div class="txt">${q.tag && !q.text.includes(q.tag) ? `<span class="tag">${q.tag}</span> ` : ''}${q.text}</div></div>` : '';
+  let body = '';
+  switch (q.kind){
+    case 'vert':
+      body = `<div class="qline"><span class="num">${q.n}.</span><div class="vert"><span></span><span class="r">${q.a}</span><span>×</span><span class="r u">${q.b}</span></div></div>
+        <div class="ans">${nb(id, 'a')}</div>`; break;
+    case 'num':
+      body = (q.side ? `<div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start"><div style="flex:1 1 300px;min-width:0">${head}</div><div class="wrapx">${q.side}</div></div>` : head)
+        + (q.pvc ? pvChart() : '') + (q.after || '')
+        + `<div class="ans">${q.pvc ? '<span class="lab">36 × 405 =</span>' : ''}${nb(id, 'a')}${q.unit ? `<span>${q.unit}</span>` : ''}</div>`; break;
+    case 'lines':
+      body = (head || `<div class="qline"><span class="num">${q.n}.</span><div></div></div>`)
+        + `<div class="lines">${q.lines.map(([l, p]) => `<div class="l"><span>${l}</span>${nb(id, p)}</div>`).join('')}</div>`; break;
+    case 'exp':
+      body = `<div class="qline"><span class="num">${q.n}.</span><span class="inl">${q.before}<sup>${nb(id, 'a', 'sm').replace('class="b sm"', 'class="b sm" style="height:34px;width:52px;font-size:17px;vertical-align:4px"')}</sup>${q.after}</span></div>`; break;
+    case 'choice':
+      body = head + `<div class="opts">${q.opts.map(o => `<button class="opt" data-q="${id}" data-p="c" data-v="${esc(o)}"><b></b><span>${esc(o)}</span></button>`).join('')}</div>`; break;
+    case 'mc':
+      body = head + `<div class="opts ${q.col ? 'col' : 'two'}">${(q.col ? [0,1,2,3] : [0,2,1,3]).map(i => `<button class="opt" data-q="${id}" data-p="c" data-v="${'ABCD'[i]}"><b>${'ABCD'[i]}</b><span>${q.opts[i]}</span></button>`).join('')}</div>`; break;
+    case 'multi':
+      body = head + `<div class="opts col">${q.opts.map((o, i) => `<button class="opt sq" data-q="${id}" data-p="m" data-v="${i}"><b>${'ABCDE'[i]}</b><span>${o}</span></button>`).join('')}</div>`; break;
+    case 'digits':
+      body = head + `<div class="digits"><span>Greatest product:</span>
+          <label><i>a</i>${nb(id, 'a', 'sm')}</label><span>0</span><label><i>b</i>${nb(id, 'b', 'sm')}</label>
+          <span style="margin:0 6px">×</span><label><i>c</i>${nb(id, 'c', 'sm')}</label><label><i>d</i>${nb(id, 'd', 'sm')}</label></div>`; break;
+    case 'table':
+      body = head + `<div class="wrapx" style="margin:10px 0 0 38px"><div class="data"><table><tr><th>Gallons</th><th>Miles</th></tr>${q.rows.map(([g, m]) =>
+          `<tr><td>${g}</td><td>${/^[ab]$/.test(m) ? nb(id, m).replace('class="b ', 'class="b sm" style="width:110px" data-x="') : m}</td></tr>`).join('')}</table></div></div>
+          <p class="note" style="margin:6px 0 0 38px">What pattern do you see in the table?</p>`; break;
+  }
+  return `<div class="q" id="q_${id.replace(':', '_')}"><span class="mark"></span>${body}
+    <div class="chk"><button data-check="${id}">Check</button><span class="fb" id="fb_${id.replace(':', '_')}"></span></div></div>`;
+}
+function pvChart(){
+  const heads = ['hundred thousands','ten thousands','one thousands','hundreds','tens','ones'];
+  const row = (cells, x) => `<tr>${cells.map((c, i) => `<td class="${i === 0 && x ? 'g' : ''}">${c}</td>`).join('')}</tr>`;
+  return `<div class="wrapx"><table class="pvc"><tr>${heads.map(h => `<th>${h}</th>`).join('')}</tr>
+    ${row(['','','','4','0','5'])}${row(['×','','','','3','6'], true)}${row(['','','','','',''])}${row(['','','','','',''])}${row(['','','','','',''])}</table></div>`;
+}
+
+function render(){
+  const d = dayOf(S.day);
+  renderDays();
+  const left = d.page % 2 === 0;
+  let h = `<section class="page ${left ? 'left' : ''}">
+    <span class="hwtag">${d.day} ${d.date} · ${d.plan}</span>
+    <div class="namebar"><label for="nameIn">Name</label>
+      <div class="nm"><input id="nameIn" placeholder="Start typing your first name..." autocomplete="off" spellcheck="false">
+        <div class="ac" id="ac" hidden></div><div class="help" id="nameHelp">Type the first letters of your first name, then tap it in the list.</div></div>
+      <label for="clsSel">Class</label><select class="clsel" id="clsSel"><option value="">—</option>${CLASSES.map(c => `<option>${c}</option>`).join('')}</select></div>`;
+  if (d.first) h += `<div class="page-top"><div class="ap-box"><div class="ap-title">Additional<br>Practice <em>${d.lesson}</em></div><div class="ap-sub">${TITLES[d.lesson]}</div></div></div>
+      <div class="another"><h3>Another Look!</h3>${LOOK[d.lesson]}</div>`;
+  d.blocks.forEach(b => {
+    if (b.dir) h += `<div><div class="dir">${b.dir}</div></div>`;
+    if (b.assess) h += `<div class="assess"><span class="pill"><i>✓</i>Assessment Practice</span><hr></div>`;
+    if (b.data) h += `<div class="wrapx" style="display:flex;justify-content:flex-end;margin-bottom:6px">${b.data}</div>`;
+    h += `<div class="qs ${b.split ? 'split c2' : 'c' + b.cols}">${b.qs.map(q => qHtml(d, q)).join('')}</div>`;
+  });
+  h += `<div class="page-foot">${left ? `<span>${d.page}</span><span class="tl"><b>Topic ${TOPIC[d.lesson]}</b><em>Lesson ${d.lesson}</em></span>`
+                                     : `<span class="tl"><b>Topic ${TOPIC[d.lesson]}</b><em>Lesson ${d.lesson}</em></span><span>${d.page}</span>`}</div></section>`;
+  h += `<div id="resultArea"></div><div class="submitbox" id="submitBox"><p>Finished? Submit this day’s homework to see your score and download your PDF.</p>
+        <button class="tb fill" id="submitBtn">Submit ${d.day}’s homework</button></div>`;
+  $('main').innerHTML = h;
+  d.blocks.forEach(b => b.qs.forEach(q => { fill(d, q); paint(d, q); }));
+  initName(); counts();
+  if (S.results[d.id]) showResult(d, false);
+  $('submitBtn').onclick = () => askSubmit(d);
+}
+
+function fill(d, q){
+  const id = qid(d, q), a = S.ans[id] || {};
+  document.querySelectorAll(`[data-q="${id}"]`).forEach(el => {
+    if (el.classList.contains('opt')) el.classList.toggle('on', el.dataset.p === 'm' ? (a.m || []).includes(+el.dataset.v) : a[el.dataset.p] === el.dataset.v);
+    else el.value = a[el.dataset.p] || '';
+  });
+}
+function paint(d, q){
+  const id = qid(d, q), c = S.checked[id], box = $('q_' + id.replace(':', '_')); if (!box) return;
+  box.classList.toggle('ok', !!(c && c.right)); box.classList.toggle('bad', !!(c && !c.right));
+  box.querySelectorAll('[data-q]').forEach(el => {
+    el.classList.remove('ok', 'bad');
+    if (!c) return;
+    const st = c.parts[el.dataset.p] ? 'ok' : 'bad';
+    if (el.classList.contains('b') || el.classList.contains('on')) el.classList.add(el.dataset.p === 'm' ? (c.right ? 'ok' : 'bad') : st);
+  });
+  const fb = $('fb_' + id.replace(':', '_'));
+  fb.className = 'fb' + (c ? (c.right ? ' ok' : ' bad') : '');
+  fb.textContent = c ? (c.right ? ['Correct!', 'Great job!', 'You got it!', 'Excellent!'][q.n % 4] : 'Not yet, try again.') : '';
+}
+function counts(){
+  const d = dayOf(S.day), qs = d.blocks.flatMap(b => b.qs);
+  const done = qs.filter(q => filled(q, S.ans[qid(d, q)])).length;
+  $('nDone').textContent = done; $('nAll').textContent = qs.length; $('dayName').textContent = 'Page ' + d.page;
+  $('fill').style.width = Math.round(done / qs.length * 100) + '%';
+}
+
+/* ===================== name search (first name) ===================== */
+function initName(){
+  const inp = $('nameIn'), ac = $('ac');
+  let items = [], hi = -1;
+  if (S.name){ inp.value = S.name; $('clsSel').value = S.cls; nameOk(); }
+  const reset = () => { S.name = ''; S.cls = ''; $('nameHelp').className = 'help'; $('nameHelp').textContent = 'Type the first letters of your first name, then tap it in the list.'; };
+  let reqId = 0, timer;
+  const show = () => {
+    const t = inp.value.trim(), cls = $('clsSel').value;
+    clearTimeout(timer);
+    if (!t){ ac.hidden = true; return; }
+    ac.innerHTML = '<div class="none">Searching…</div>'; ac.hidden = false;
+    const my = ++reqId;
+    timer = setTimeout(async () => {
+      let list;
+      try { const r = await fetch(API + '?q=' + encodeURIComponent(t) + '&cls=' + encodeURIComponent(cls)); list = await r.json(); }
+      catch(e){ if (my === reqId) ac.innerHTML = '<div class="none">Could not load the class list. Check the internet.</div>'; return; }
+      if (my !== reqId) return;
+      items = list.slice(0, 10); hi = -1;
+      ac.innerHTML = items.length ? items.map((s, i) => `<div data-i="${i}"><span><mark>${esc(s.name.slice(0, t.length))}</mark>${esc(s.name.slice(t.length))}</span><span class="badge">${s.cls}</span></div>`).join('')
+                                  : '<div class="none">No name found. Check the spelling or choose your class.</div>';
+    }, 200);
+  };
+  inp.oninput = () => { if (S.name) reset(); show(); };
+  inp.onfocus = () => { if (!S.name) show(); };
+  inp.onblur = () => setTimeout(() => ac.hidden = true, 150);
+  inp.onkeydown = e => {
+    const rows = ac.querySelectorAll('[data-i]');
+    if (e.key === 'ArrowDown'){ hi = Math.min(hi + 1, rows.length - 1); e.preventDefault(); }
+    else if (e.key === 'ArrowUp'){ hi = Math.max(hi - 1, 0); e.preventDefault(); }
+    else if (e.key === 'Enter'){ e.preventDefault(); if (items[Math.max(hi, 0)]) pick(items[Math.max(hi, 0)]); return; }
+    else return;
+    rows.forEach((r, i) => r.classList.toggle('hi', i === hi));
+  };
+  ac.onmousedown = e => { const r = e.target.closest('[data-i]'); if (r){ e.preventDefault(); pick(items[+r.dataset.i]); } };
+  $('clsSel').onchange = () => { if (S.name && $('clsSel').value !== S.cls){ reset(); inp.value = ''; } inp.focus(); show(); };
+}
+function nameOk(){ $('nameHelp').className = 'help ok'; $('nameHelp').textContent = '✓ ' + S.cls; }
+function pick(s){
+  const guest = { ans:S.ans, checked:S.checked, results:S.results };
+  S.name = s.name; S.cls = s.cls;
+  const mine = load();
+  if (mine){ S.ans = mine.ans || {}; S.checked = mine.checked || {}; S.results = mine.results || {}; toast('Welcome back, ' + s.name.split(' ')[0] + '!'); }
+  else { S.ans = guest.ans; S.checked = guest.checked; S.results = guest.results; toast('Hello, ' + s.name.split(' ')[0] + '!'); }
+  try { localStorage.removeItem('g5hw44:guest'); } catch(e){}
+  save(); render();
+}
+function needName(){
+  if (S.name) return false;
+  window.scrollTo({ top:0, behavior:'smooth' }); setTimeout(() => $('nameIn').focus(), 300);
+  toast('First type your first name at the top and choose it from the list.'); return true;
+}
+
+/* ===================== answering ===================== */
+document.addEventListener('input', e => {
+  const el = e.target; if (!el.dataset || !el.dataset.q) return;
+  el.value = el.value.replace(/[^0-9.,]/g, '');
+  setAns(el.dataset.q, el.dataset.p, el.value);
+});
+document.addEventListener('click', e => {
+  const dy = e.target.closest('[data-day]'); if (dy){ S.day = dy.dataset.day; rememberDay(); render(); window.scrollTo({ top:0 }); return; }
+  const o = e.target.closest('.opt');
+  if (o){
+    const id = o.dataset.q;
+    if (o.dataset.p === 'm'){
+      const a = S.ans[id] || {}, m = new Set(a.m || []), v = +o.dataset.v;
+      m.has(v) ? m.delete(v) : m.add(v); o.classList.toggle('on', m.has(v));
+      setAns(id, 'm', [...m].sort());
+    } else {
+      document.querySelectorAll(`.opt[data-q="${id}"]`).forEach(x => x.classList.toggle('on', x === o));
+      setAns(id, 'c', o.dataset.v);
+    }
+    return;
+  }
+  const ck = e.target.closest('[data-check]'); if (ck) check(ck.dataset.check);
+});
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.dataset && e.target.dataset.q){ e.preventDefault(); check(e.target.dataset.q); } });
+
+function findQ(id){ const [dId, n] = id.split(':'); const d = dayOf(dId); return [d, d.blocks.flatMap(b => b.qs).find(q => String(q.n) === n)]; }
+function setAns(id, p, v){
+  S.ans[id] = S.ans[id] || {}; S.ans[id][p] = v;
+  if (S.checked[id]){ delete S.checked[id]; const [d, q] = findQ(id); paint(d, q); }
+  save(); counts();
+}
+function check(id){
+  if (needName()) return;
+  const [d, q] = findQ(id), a = S.ans[id] || {}, fb = $('fb_' + id.replace(':', '_'));
+  if (!filled(q, a)){ fb.className = 'fb bad'; fb.textContent = q.kind === 'multi' ? 'Choose at least one answer first.' : 'Fill in every box first.'; return; }
+  S.checked[id] = mark(q, a); save(); paint(d, q);
+}
+
+/* ===================== submit + result ===================== */
+function askSubmit(d){
+  if (needName()) return;
+  const qs = d.blocks.flatMap(b => b.qs), blank = qs.filter(q => !filled(q, S.ans[qid(d, q)])).length;
+  modal(`<h3>Submit ${d.day}’s homework?</h3><p><b>${esc(S.name)}</b> · ${S.cls} · Page ${d.page}</p>
+    <p>${blank ? `You still have <b style="color:var(--bad)">${blank}</b> question${blank > 1 ? 's' : ''} not answered.` : 'You answered every question.'}</p>
+    <div class="mb"><button class="tb" id="mNo">Go back</button><button class="tb fill" id="mYes">Submit</button></div>`);
+  $('mNo').onclick = closeModal;
+  $('mYes').onclick = () => {
+    closeModal();
+    const res = { at:new Date().toISOString(), items:{} }; let score = 0;
+    qs.forEach(q => { const id = qid(d, q), m = mark(q, S.ans[id]); res.items[q.n] = m.right; if (m.right) score++; S.checked[id] = m; paint(d, q); });
+    res.score = score; res.total = qs.length;
+    S.results[d.id] = res; save(); renderDays(); showResult(d, true); sendResult(d, res);
+  };
+}
+function showResult(d, scroll){
+  const r = S.results[d.id], qs = d.blocks.flatMap(b => b.qs), pct = Math.round(r.score / r.total * 100);
+  const msg = pct >= 90 ? 'Amazing work!' : pct >= 75 ? 'Great job!' : pct >= 50 ? 'Good effort! Keep practicing.' : 'Keep going, you can do it!';
+  $('resultArea').innerHTML = `<div class="result">
+      <div class="who">${esc(S.name)} · ${S.cls} · ${d.day} ${d.date} · Page ${d.page}</div>
+      <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><span class="score">${r.score} / ${r.total}</span><b>${pct}% · ${msg}</b></div>
+      <div class="btns"><button class="tb fill" id="pdfBtn">⬇ Download PDF</button></div>
+      <p class="note" id="sendNote">${r.sent ? '✓ Your result was sent to your teacher.' : ''}</p>
+      <p class="note" id="pdfNote">Your teacher receives your result automatically. The PDF is a backup copy.</p>
+      <div class="rlist">${qs.map(q => r.items[q.n] ? `<div><b style="color:var(--ok)">✓ ${q.n}.</b><span>Correct</span></div>`
+          : `<div><b style="color:var(--bad)">✗ ${q.n}.</b><span>Correct answer: <b>${esc(shownAnswer(q))}</b></span></div>`).join('')}</div></div>`;
+  $('submitBtn').textContent = 'Submit again';
+  $('pdfBtn').onclick = () => downloadPDF(d);
+  if (scroll) $('resultArea').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+/* ===================== send result to the teacher's Google Sheet ===================== */
+const QKEY = 'g5hw44:queue';
+const setNote = t => { const n = $('sendNote'); if (n) n.innerHTML = t; };
+const queue = () => { try { return JSON.parse(localStorage.getItem(QKEY) || '[]'); } catch(e){ return []; } };
+const setQueue = q => { try { localStorage.setItem(QKEY, JSON.stringify(q)); } catch(e){} };
+const postOne = p => fetch(API, { method:'POST', mode:'no-cors', headers:{ 'Content-Type':'text/plain;charset=utf-8' }, body:JSON.stringify(p) });
+async function sendResult(d, res){
+  const qs = d.blocks.flatMap(b => b.qs);
+  const p = { cls:S.cls, name:S.name, day:d.day, date:d.date, page:d.page, score:res.score, total:res.total,
+    items:qs.map(q => ({ n:q.n, ok:!!res.items[q.n], given:givenText(q, S.ans[qid(d, q)]), correct:shownAnswer(q) })) };
+  setNote('Sending to your teacher…');
+  try { await postOne(p); res.sent = true; save(); setNote('✓ Your result was sent to your teacher.'); }
+  catch(e){ setQueue(queue().concat([p])); setNote('<b style="color:var(--bad)">Could not send (no internet).</b> It will be sent automatically next time you open this page. You can also download the PDF.'); }
+}
+async function flushQueue(){ const q = queue(); if (!q.length) return; const left = [];
+  for (const p of q){ try { await postOne(p); } catch(e){ left.push(p); } } setQueue(left); }
+
+/* ===================== PDF for the teacher ===================== */
+const pdfText = s => String(s == null ? '' : s).replace(/[−–]/g, '-').replace(/[’‘]/g, "'").replace(/▢/g, '[ ]').replace(/→/g, '->')
+  .replace(/[^\x20-\x7E\xA0-\xFF×·]/g, '');
+function givenText(q, a){
+  a = a || {};
+  if (q.kind === 'multi') return (a.m || []).map(i => 'ABCDE'[i]).join(', ');
+  if (q.kind === 'digits') return a.a || a.b || a.c || a.d ? `${a.a || '_'}0${a.b || '_'} × ${a.c || '_'}${a.d || '_'}` : '';
+  return partsOf(q).map(p => a[p] || '').filter(x => String(x).trim()).join(' / ');
+}
+async function downloadPDF(d){
+  if (!window.jspdf){ toast('The PDF maker did not load. Check the internet and reload the page.', 4000); return; }
+  const r = S.results[d.id], qs = d.blocks.flatMap(b => b.qs);
+  const { jsPDF } = window.jspdf, doc = new jsPDF({ unit:'mm', format:'a4' });
+  const W = 210, H = 297, L = 16, R = W - 22, NAVY = [17, 28, 87], GREEN = [92, 194, 70];
+  const frame = () => { doc.setFillColor(...NAVY); doc.rect(0, 0, W, 7, 'F'); doc.rect(0, H - 7, W, 7, 'F'); doc.setFillColor(...GREEN); doc.rect(W - 9, 7, 9, H - 14, 'F'); };
+  frame();
+  doc.setTextColor(...NAVY); doc.setFont('helvetica', 'bold'); doc.setFontSize(18);
+  doc.text('Grade 5 Math Homework', L, 20);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(12); doc.setTextColor(60, 60, 60);
+  doc.text(pdfText(`${d.day} ${d.date} · Page ${d.page} · Lesson ${d.lesson} ${TITLES[d.lesson]}`), L, 27);
+  doc.setDrawColor(200, 200, 205); doc.setLineWidth(.6); doc.roundedRect(L, 33, R - L, 30, 3, 3, 'S');
+  doc.setFontSize(11); doc.text('Name', L + 5, 41); doc.text('Class', L + 5, 49); doc.text('Submitted', L + 5, 57);
+  doc.setTextColor(20, 20, 20); doc.setFont('helvetica', 'bold'); doc.text(pdfText(S.name), L + 30, 41); doc.text(S.cls, L + 30, 49);
+  doc.setFont('helvetica', 'normal'); doc.text(new Date(r.at).toLocaleString('en-GB'), L + 30, 57);
+  doc.setFillColor(...NAVY); doc.roundedRect(R - 52, 37, 48, 22, 3, 3, 'F'); doc.setTextColor(255, 255, 255);
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(20); doc.text(r.score + ' / ' + r.total, R - 28, 48, { align:'center' });
+  doc.setFontSize(11); doc.text(Math.round(r.score / r.total * 100) + '%', R - 28, 55, { align:'center' });
+  let y = 72;
+  const head = () => { doc.setFillColor(...NAVY); doc.rect(L, y, R - L, 7, 'F'); doc.setTextColor(255, 255, 255); doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5);
+    doc.text('Q', L + 2, y + 4.8); doc.text('Question', L + 10, y + 4.8); doc.text('Result', L + 84, y + 4.8); doc.text('Student answer', L + 102, y + 4.8); doc.text('Correct answer', L + 140, y + 4.8); y += 7; };
+  head();
+  qs.forEach(q => {
+    const ok = r.items[q.n], a = S.ans[qid(d, q)];
+    const qt = pdfText(q.kind === 'vert' ? `${q.a} × ${q.b}` : q.kind === 'exp' ? q.before + '^[ ]' + q.after : plain(q.text || (q.lines || []).map(l => l[0]).join(' ')));
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
+    const c1 = doc.splitTextToSize(qt, 72), c2 = doc.splitTextToSize(pdfText(givenText(q, a)) || '(blank)', 36), c3 = doc.splitTextToSize(ok ? '' : pdfText(shownAnswer(q)), R - L - 142);
+    const h = Math.max(c1.length, c2.length, c3.length, 1) * 4 + 2.6;
+    if (y + h > H - 16){ doc.addPage(); frame(); y = 16; head(); }
+    doc.setFillColor(...(ok ? [225, 243, 232] : [251, 228, 228])); doc.rect(L, y, R - L, h, 'F');
+    doc.setTextColor(30, 30, 30); doc.setFont('helvetica', 'bold'); doc.text(String(q.n), L + 2, y + 4.4);
+    doc.setFont('helvetica', 'normal'); doc.text(c1, L + 10, y + 4.4);
+    doc.setFont('helvetica', 'bold'); doc.setTextColor(...(ok ? [29, 127, 70] : [194, 59, 59])); doc.text(ok ? 'Right' : (filled(q, a) ? 'Wrong' : 'Blank'), L + 84, y + 4.4);
+    doc.setFont('helvetica', 'normal'); doc.setTextColor(30, 30, 30); doc.text(c2, L + 102, y + 4.4); if (c3.length) doc.text(c3, L + 140, y + 4.4);
+    y += h;
+  });
+  const n = doc.getNumberOfPages();
+  for (let i = 1; i <= n; i++){ doc.setPage(i); doc.setFontSize(8.5); doc.setTextColor(90, 90, 90); doc.setFont('helvetica', 'normal');
+    doc.text(pdfText(`${S.name} · ${S.cls} · ${d.day} ${d.date} · page ${d.page}`), L, H - 11); doc.text(`Page ${i} of ${n}`, R, H - 11, { align:'right' }); }
+  const file = (`Grade5_${S.cls}_${S.name}_${d.day}_p${d.page}`).replace(/[^A-Za-z0-9_]+/g, '_') + '.pdf';
+  const blob = doc.output('blob');
+  const downloads = window.claude && window.claude.use ? await window.claude.use('downloads') : null;
+  if (downloads){
+    try { await downloads.save({ filename:file, data:blob }); toast('PDF saved. Send it to your teacher.', 4000); }
+    catch (e){ if (e && e.code === 'declined') toast('The PDF was not saved. Press Download PDF again when you are ready.', 4000);
+               else if (e && e.code === 'rate_limited') toast('Please wait a moment, then press Download PDF again.', 4000);
+               else { $('pdfNote').innerHTML = 'Downloading is not available here. <b>Take a screenshot of this score</b> and send it to your teacher.'; } }
+  } else {
+    try { doc.save(file); toast('PDF saved. Send it to your teacher.', 4000); }
+    catch (e){ $('pdfNote').innerHTML = 'Downloading is not available here. <b>Take a screenshot of this score</b> and send it to your teacher.'; }
+  }
+}
+
+/* ===================== start ===================== */
+(function start(){
+  try { const d = localStorage.getItem('g5hw44:day'); if (d && dayOf(d)) S.day = d; } catch(e){}
+  const g = load(); if (g){ S.ans = g.ans || {}; S.checked = g.checked || {}; S.results = g.results || {}; }
+  render(); flushQueue();
+})();
+</script>
+
+</body></html>
