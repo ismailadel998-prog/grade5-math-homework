@@ -153,6 +153,7 @@
   .q.ok .mark{display:flex;background:var(--ok)} .q.bad .mark{display:flex;background:var(--bad)}
   .q.ok .mark::before{content:"✓"} .q.bad .mark::before{content:"✗"}
 
+  .remind{background:#fff3cd;border:2px solid #e0b500;border-radius:8px;padding:10px 14px;margin:0 0 14px;font-weight:600;font-size:16px}.remind .tb{padding:5px 14px;font-size:15px;margin-left:8px}
   /* ---------- submit + result ---------- */
   .submitbox{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--white);border:2px solid var(--navy);border-radius:10px;padding:14px 18px}
   .submitbox p{margin:0;color:var(--muted);font-size:15px}
@@ -363,6 +364,8 @@ function render(){
       <div class="nm"><input id="nameIn" placeholder="Start typing your first name..." autocomplete="off" spellcheck="false">
         <div class="ac" id="ac" hidden></div><div class="help" id="nameHelp">Type the first letters of your first name, then tap it in the list.</div></div>
       <label for="clsSel">Class</label><select class="clsel" id="clsSel"><option value="">—</option>${CLASSES.map(c => `<option>${c}</option>`).join('')}</select></div>`;
+  const pend = DAYS.filter(x => !S.results[x.id] && x.id !== d.id);
+  if (S.name && DAYS.some(x => S.results[x.id]) && pend.length) h += `<div class="remind">👉 Remember: you still have homework for <b>${pend.map(x => x.day.trim() + ' (page ' + x.page + ')').join(', ')}</b>. <button class="tb fill" data-day="${pend[0].id}">Go there</button></div>`;
   if (d.first) h += `<div class="page-top"><div class="ap-box"><div class="ap-title">Additional<br>Practice <em>${d.lesson}</em></div><div class="ap-sub">${TITLES[d.lesson]}</div></div></div>
       <div class="another"><h3>Another Look!</h3>${LOOK[d.lesson]}</div>`;
   d.blocks.forEach(b => {
@@ -513,7 +516,7 @@ function askSubmit(d){
     const res = { at:new Date().toISOString(), items:{} }; let score = 0;
     qs.forEach(q => { const id = qid(d, q), m = mark(q, S.ans[id]); res.items[q.n] = m.right; if (m.right) score++; S.checked[id] = m; paint(d, q); });
     res.score = score; res.total = qs.length;
-    S.results[d.id] = res; save(); renderDays(); showResult(d, true); sendResult(d, res);
+    S.results[d.id] = res; save(); renderDays(); showResult(d, true); sendResult(d, res); nextDayModal(d);
   };
 }
 function showResult(d, scroll){
@@ -554,6 +557,19 @@ const WIPE = '2026-11-11T15:50:00.000Z';
 async function resendOld(){
   for (const d of DAYS){ const r = S.results[d.id];
     if (r && !r.resent && r.at && r.at < WIPE){ await sendResult(d, r); r.resent = true; save(); } }
+}
+
+/* after a submit: remind the student about the other homework days */
+function nextDayModal(d){
+  const left = DAYS.filter(x => !S.results[x.id]);
+  if (!left.length){
+    modal('<h3>🎉 All done!</h3><p>You finished all the homework days. Well done, ' + esc(S.name.split(' ')[0]) + '!</p><div class="mb"><button class="tb fill" id="mOk">Close</button></div>');
+    $('mOk').onclick = closeModal; return;
+  }
+  const n = left.find(x => DAYS.indexOf(x) > DAYS.indexOf(d)) || left[0];
+  modal('<h3>✓ Submitted! One more day to do</h3><p>You still have homework for <b>' + esc(n.day.trim()) + '</b> (page ' + n.page + ').' + (left.length > 1 ? ' You have ' + left.length + ' days left.' : '') + '</p><div class="mb"><button class="tb" id="mLater">Later</button><button class="tb fill" id="mGo">Go there now</button></div>');
+  $('mLater').onclick = () => { closeModal(); render(); const r = $('resultArea'); if (r) r.scrollIntoView({ block:'start' }); };
+  $('mGo').onclick = () => { closeModal(); S.day = n.id; rememberDay(); render(); window.scrollTo({ top:0 }); };
 }
 
 /* ===================== PDF for the teacher ===================== */
