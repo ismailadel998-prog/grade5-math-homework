@@ -55,6 +55,7 @@ th{background:#f4f6fb;color:var(--navy);position:sticky;top:0}
     </section>
     <section class="card"><div class="stats" id="stats"></div></section>
     <section class="card"><h2>Students</h2><div class="wrap"><table id="tbl"></table></div></section>
+    <section class="card"><h2>All days overview</h2><div class="wrap"><table id="ovw"></table></div><p class="note">Each student's latest score on every homework day of this grade. A dash means not submitted yet.</p></section>
     <section class="card"><h2>Questions: % of students who got each right</h2><div id="qs"></div>
       <p class="note">Based on each student's latest submission for the selected day. Low bars are the questions to review in class.</p></section>
   </div>
@@ -109,6 +110,19 @@ function start(){
   $('daySel').onchange = () => { setClasses(); render(); };
   $('clsSel').onchange = render; render();
 }
+function overview(){
+  const g = gradeOf($('daySel').value), cls = $('clsSel').value;
+  const ds = days().filter(d => gradeOf(d.k) === g);
+  const latest = new Map();
+  D.results.forEach(r => { const k = r.cls + '|' + r.name + '|' + r.day + '|' + r.page; if (!latest.has(k) || r.at > latest.get(k).at) latest.set(k, r); });
+  const roster = D.roster.filter(s => s.cls !== 'Test' && String(s.cls).startsWith(g) && (!cls || s.cls === cls)).sort((a, b) => a.cls.localeCompare(b.cls) || a.name.localeCompare(b.name));
+  $('ovw').innerHTML = '<tr><th>Class</th><th>Student</th>' + ds.map(d => '<th>' + esc(d.label.replace(/^Grade \d · /, '')) + '</th>').join('') + '</tr>' +
+    roster.map(s => '<tr><td>' + esc(s.cls) + '</td><td>' + esc(s.name) + '</td>' + ds.map(d => {
+      const [day, page] = d.k.split('|'), r = latest.get(s.cls + '|' + s.name + '|' + day + '|' + page);
+      if (!r) return '<td>–</td>';
+      const p = Math.round(r.score / r.total * 100);
+      return '<td><span class="pill ' + (p >= 75 ? 'p-ok' : p >= 50 ? 'p-mid' : 'p-no') + '">' + r.score + '/' + r.total + '</span></td>'; }).join('') + '</tr>').join('');
+}
 function current(){
   const [day, page] = ($('daySel').value || '|').split('|'), cls = $('clsSel').value;
   const latest = new Map();
@@ -118,7 +132,7 @@ function current(){
   const rows = roster.map(s => ({ s, r: latest.get(s.cls + '|' + s.name) }));
   return { day, page, cls, rows };
 }
-function render(){
+function render(){ setTimeout(overview, 0);
   const { day, page, cls, rows } = current();
   const done = rows.filter(x => x.r), n = rows.length;
   const avg = done.length ? Math.round(done.reduce((a, x) => a + x.r.score / x.r.total * 100, 0) / done.length) : 0;
