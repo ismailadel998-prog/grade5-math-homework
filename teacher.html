@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Teacher Dashboard – Grade 5 Math Homework</title>
+<style>
+:root{--navy:#111c57;--green:#5cc246;--desk:#e6e9ef;--ink:#1f2328;--muted:#5d6470;--ok:#1d7f46;--ok-bg:#e1f3e8;--bad:#c23b3b;--bad-bg:#fbe4e4;--warn:#9a6b00;--warn-bg:#fff3cd;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font:16px/1.5 "Segoe UI",system-ui,-apple-system,sans-serif}
+header{background:var(--navy);color:#fff;padding:14px 16px}
+header h1{margin:0;font-size:20px;max-width:1100px;margin-inline:auto}
+main{max-width:1100px;margin:0 auto;padding:16px;display:grid;gap:16px}
+.card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(17,28,87,.1);padding:16px;border-top:5px solid var(--green)}
+h2{margin:0 0 10px;font-size:18px;color:var(--navy)}
+input,select,button{font:inherit;padding:9px 12px;border-radius:8px;border:1.5px solid #9aa1ad}
+button{background:var(--navy);color:#fff;border-color:var(--navy);cursor:pointer;font-weight:600}
+button.ghost{background:#fff;color:var(--navy)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:#f4f6fb;border-radius:8px;padding:10px 14px}
+.stat b{display:block;font-size:28px;color:var(--navy);line-height:1.1}
+.stat span{color:var(--muted);font-size:14px}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid #e3e5ea;font-size:15px}
+th{background:#f4f6fb;color:var(--navy);position:sticky;top:0}
+.pill{display:inline-block;border-radius:999px;padding:1px 10px;font-size:13px;font-weight:700}
+.p-ok{background:var(--ok-bg);color:var(--ok)}.p-no{background:var(--bad-bg);color:var(--bad)}.p-mid{background:var(--warn-bg);color:var(--warn)}
+.bar{background:#e1e4ec;border-radius:99px;height:12px;min-width:120px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green)}
+.bar.low i{background:var(--bad)}
+.qrow{display:grid;grid-template-columns:48px 1fr 54px;gap:10px;align-items:center;padding:3px 0}
+.note{color:var(--muted);font-size:14px}
+.err{color:var(--bad);font-weight:600}
+[hidden]{display:none!important}
+</style></head>
+<body>
+<header><h1>Teacher Dashboard · Grade 5 Math Homework</h1></header>
+<main>
+  <section class="card" id="login">
+    <h2>Teacher passcode</h2>
+    <form class="row" id="loginForm"><input id="key" type="password" placeholder="Passcode" autocomplete="current-password" required><button>Open dashboard</button></form>
+    <p class="note" id="msg">Only the teacher has this passcode. Student results are not shown without it.</p>
+  </section>
+
+  <div id="dash" hidden style="display:grid;gap:16px">
+    <section class="card">
+      <div class="row">
+        <label>Homework day <select id="daySel"></select></label>
+        <label>Class <select id="clsSel"><option value="">All</option></select></label>
+        <button class="ghost" id="reload">Refresh</button>
+        <button class="ghost" id="csv">Download CSV</button>
+        <button class="ghost" id="logout">Lock</button>
+      </div>
+    </section>
+    <section class="card"><div class="stats" id="stats"></div></section>
+    <section class="card"><h2>Students</h2><div class="wrap"><table id="tbl"></table></div></section>
+    <section class="card"><h2>Questions: % of students who got each right</h2><div id="qs"></div>
+      <p class="note">Based on each student's latest submission for the selected day. Low bars are the questions to review in class.</p></section>
+  </div>
+</main>
+<script>
+const API = 'PASTE_SCRIPT_URL_HERE';   // same Google Apps Script web app link as index.html
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+let D = null, KEY = '';
+
+async function load(key){
+  const r = await fetch(API + '?action=dashboard&key=' + encodeURIComponent(key));
+  const j = await r.json();
+  if (j.error) throw new Error('denied');
+  return j;
+}
+$('loginForm').onsubmit = async e => {
+  e.preventDefault(); $('msg').className = 'note'; $('msg').textContent = 'Checking…';
+  try { KEY = $('key').value; D = await load(KEY); try { sessionStorage.setItem('tk', KEY); } catch(_){} start(); }
+  catch(err){ $('msg').className = 'err'; $('msg').textContent = err.message === 'denied' ? 'Wrong passcode, or the script has no passcode set yet.' : 'Could not reach the Google Sheet. Check the internet and the script link.'; }
+};
+$('logout').onclick = () => { try { sessionStorage.removeItem('tk'); } catch(_){} location.reload(); };
+$('reload').onclick = async () => { try { D = await load(KEY); render(); } catch(_){ alert('Could not refresh.'); } };
+
+function days(){
+  const m = new Map();
+  D.results.forEach(r => { const k = r.day + '|' + r.page; if (!m.has(k)) m.set(k, { k, label: r.day + ' · page ' + r.page, t: r.at }); else if (r.at < m.get(k).t) m.get(k).t = r.at; });
+  return [...m.values()].sort((a, b) => a.t < b.t ? 1 : -1);
+}
+function start(){
+  $('login').hidden = true; $('dash').hidden = false;
+  const ds = days();
+  $('daySel').innerHTML = ds.length ? ds.map(d => `<option value="${esc(d.k)}">${esc(d.label)}</option>`).join('') : '<option value="">No submissions yet</option>';
+  $('clsSel').innerHTML = '<option value="">All</option>' + [...new Set(D.roster.map(s => s.cls))].filter(c => c !== 'Test').map(c => `<option>${esc(c)}</option>`).join('');
+  $('daySel').onchange = $('clsSel').onchange = render; render();
+}
+function current(){
+  const [day, page] = ($('daySel').value || '|').split('|'), cls = $('clsSel').value;
+  const latest = new Map();
+  D.results.filter(r => r.day === day && String(r.page) === page).forEach(r => { const k = r.cls + '|' + r.name; if (!latest.has(k) || r.at > latest.get(k).at) latest.set(k, r); });
+  const roster = D.roster.filter(s => s.cls !== 'Test' && (!cls || s.cls === cls)).sort((a, b) => a.cls.localeCompare(b.cls) || a.name.localeCompare(b.name));
+  const rows = roster.map(s => ({ s, r: latest.get(s.cls + '|' + s.name) }));
+  return { day, page, cls, rows };
+}
+function render(){
+  const { day, page, cls, rows } = current();
+  const done = rows.filter(x => x.r), n = rows.length;
+  const avg = done.length ? Math.round(done.reduce((a, x) => a + x.r.score / x.r.total * 100, 0) / done.length) : 0;
+  const low = done.filter(x => x.r.score / x.r.total < .5).length;
+  $('stats').innerHTML = `<div class="stat"><b>${done.length} / ${n}</b><span>submitted</span></div><div class="stat"><b>${n - done.length}</b><span>not yet</span></div><div class="stat"><b>${avg}%</b><span>average score</span></div><div class="stat"><b>${low}</b><span>below 50%</span></div>`;
+  $('tbl').innerHTML = '<tr><th>Class</th><th>Student</th><th>Status</th><th>Score</th><th>%</th><th>Sent</th></tr>' + rows.map(({ s, r }) => {
+    if (!r) return `<tr><td>${esc(s.cls)}</td><td>${esc(s.name)}</td><td><span class="pill p-no">Not yet</span></td><td>–</td><td>–</td><td>–</td></tr>`;
+    const p = Math.round(r.score / r.total * 100), cl = p >= 75 ? 'p-ok' : p >= 50 ? 'p-mid' : 'p-no';
+    return `<tr><td>${esc(s.cls)}</td><td>${esc(s.name)}</td><td><span class="pill p-ok">Submitted</span></td><td>${r.score} / ${r.total}</td><td><span class="pill ${cl}">${p}%</span></td><td>${esc(new Date(r.at).toLocaleString('en-GB', { dateStyle:'short', timeStyle:'short' }))}</td></tr>`; }).join('');
+  // per-question
+  const who = new Set(done.map(x => x.s.cls + '|' + x.s.name)), last = new Map();
+  D.answers.filter(a => a.day === day && String(a.page) === page && who.has(a.cls + '|' + a.name)).forEach(a => { last.set(a.cls + '|' + a.name + '|' + a.q, a); });
+  const per = new Map();
+  last.forEach(a => { const o = per.get(a.q) || { ok: 0, n: 0 }; o.n++; if (a.ok) o.ok++; per.set(a.q, o); });
+  const qs = [...per.entries()].sort((a, b) => a[0] - b[0]);
+  $('qs').innerHTML = qs.length ? qs.map(([q, o]) => { const p = Math.round(o.ok / o.n * 100);
+    return `<div class="qrow"><b>Q${q}</b><div class="bar ${p < 50 ? 'low' : ''}"><i style="width:${p}%"></i></div><span>${p}%</span></div>`; }).join('') : '<p class="note">No answers yet for this day.</p>';
+}
+$('csv').onclick = () => {
+  const { day, page, rows } = current();
+  const line = a => a.map(v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"').join(',');
+  const out = [line(['Class', 'Student', 'Day', 'Page', 'Status', 'Score', 'Total', 'Percent'])].concat(rows.map(({ s, r }) =>
+    line([s.cls, s.name, day, page, r ? 'Submitted' : 'Not yet', r ? r.score : '', r ? r.total : '', r ? Math.round(r.score / r.total * 100) + '%' : ''])));
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + out.join('\n')], { type:'text/csv' })); a.download = `results_${day}_p${page}.csv`; a.click();
+};
+(async () => { try { const k = sessionStorage.getItem('tk'); if (k){ KEY = k; D = await load(k); start(); } } catch(_){} })();
+</script>
+</body></html>
