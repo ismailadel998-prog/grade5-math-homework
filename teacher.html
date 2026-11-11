@@ -95,7 +95,8 @@ function current(){
   const [day, page] = ($('daySel').value || '|').split('|'), cls = $('clsSel').value;
   const latest = new Map();
   D.results.filter(r => r.day === day && String(r.page) === page).forEach(r => { const k = r.cls + '|' + r.name; if (!latest.has(k) || r.at > latest.get(k).at) latest.set(k, r); });
-  const roster = D.roster.filter(s => s.cls !== 'Test' && (!cls || s.cls === cls)).sort((a, b) => a.cls.localeCompare(b.cls) || a.name.localeCompare(b.name));
+  const gm = /^Grade (\d)/.exec(day), grade = gm ? gm[1] : '5';
+  const roster = D.roster.filter(s => s.cls !== 'Test' && String(s.cls).startsWith(grade) && (!cls || s.cls === cls)).sort((a, b) => a.cls.localeCompare(b.cls) || a.name.localeCompare(b.name));
   const rows = roster.map(s => ({ s, r: latest.get(s.cls + '|' + s.name) }));
   return { day, page, cls, rows };
 }
